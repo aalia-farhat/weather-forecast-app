@@ -65,7 +65,7 @@ weather-app/
 │   └── background.jpg
 ├── README.md
 ├── .gitignore
-```
+
 ---
 
 ## How to Run the Project
@@ -74,20 +74,26 @@ weather-app/
 
 ```bash
 git clone https://github.com/yourusername/weather-forecast-app.git
-
+```
 2. Open the project folder
 
 ```bash
 cd weather-app
-
+```
 3. Install required libraries
 
 ```bash
 pip install flask requests
-
+```
 4. Run the Flask app
 
 ```bash
 python app.py
+```
 
 5. Open your browser and go to http://127.0.0.1:5000
+
+
+## Screenshot
+
+![Weather App Screenshot](static/screenshot.png)
