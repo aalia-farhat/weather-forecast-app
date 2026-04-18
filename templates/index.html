@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Forecast App</h1>
+
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+
+        {% if weather %}
+            <div class="weather-card">
+                <h2>📍 {{ weather.city }}</h2>
+                <p>🌡️ Temperature: {{ weather.temperature }}°C</p>
+                <p>💧 Humidity: {{ weather.humidity }}%</p>
+                <p>🌬️ Wind Speed: {{ weather.wind_speed }} km/h</p>
+
+                <h3>📅 Forecast</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Maximum Temperature</th>
+                            <th>Minimum Temperature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(weather.dates|length) %}
+                        <tr>
+                            <td>{{ weather.dates[i] }}</td>
+                            <td>
+                                {% if weather.max_temps[i] > 35 %}
+                                    ☀️ {{ weather.max_temps[i] }}°C
+                                {% elif weather.max_temps[i] < 20 %}
+                                    ❄️ {{ weather.max_temps[i] }}°C
+                                {% else %}
+                                    ☀️ {{ weather.max_temps[i] }}°C
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if weather.min_temps[i] < 15 %}
+                                    🧥 {{ weather.min_temps[i] }}°C
+                                {% else %}
+                                    🌤️ {{ weather.min_temps[i] }}°C
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
