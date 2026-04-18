@@ -67,6 +67,7 @@ weather-app/
 ├── .gitignore
 
 ---
+```
 
 ## How to Run the Project
 
